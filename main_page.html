@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>PAYMENTS FRAUD DETECTION</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&family=Raleway:wght@100&family=Red+Hat+Display:wght@500;700;900&family=Space+Mono&display=swap" rel="stylesheet">
+    <script>
+
+      function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah')
+                .attr('src', e.target.result)
+                .width(450)
+                .height(500);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+
+ 
+}    
+
+    </script>
+    
+  </head>
+
+  <body class="main-text">
+
+   <!-- Side navigation -->
+   <nav class="sidenav">
+    <a href="/Code/dashboard.html">Dashboard</a>
+    <a href="/Code/main_page.html">Evaluation</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+   </nav> 
+   
+   <div class="container" style="min-width:100vw; min-height:100vh">
+    <div class="row" style="min-width:100vw;">
+      <div class="col m-0 p-0">
+                      <!-- Navbar Component -->
+   <nav class="navbar navbar-expand-lg pb-0 pt-0 mb-4 " style="box-shadow: 0px 15px 15px #ffe600; z-index: 10; min-width:110%; position: fixed; top:0px;">
+    <a class="navbar-brand" href="#"><img id = "logo" src = "/Images/EY_logo.png" alt = ""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse font-weight-normal text-primary mt-lg-2" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Services</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-white" href="#">History</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-white" href="#">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+      </div>
+    </div>
+
+    <div class="row" style="min-width:100vw;">
+
+      <div class="col" style="margin-left: 11em; margin-top: 5em;">
+        <p class = "display-4">PAYMENTS FRAUD DETECTION</p>
+      </div>
+
+        <div class="col mr-5" style="margin-top: 5.5em;">
+
+           <div class="row justify-content-end">
+              <button onClick="window.location.reload();">Refresh Page</button>
+           </div>
+         </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col mt-2" style="margin-left:11em;">
+          <input type='file' id = "subfile" onchange="readURL(this);" />
+          <embed id="blah" style="margin-top: 2em;"src=""/>
+        </div>
+
+
+        <div class="col mt-2">
+          <button name="submit" id="submitbtn" class="btn" href="#" role="button" onclick="myFunction()">Submit</button>
+        </div>
+
+        <script>
+          var n = 0;
+          var rand_no = Math.floor(Math.random() * 10) + 1;
+          function myFunction() {
+
+            if(document.getElementById("subfile").value != "") {
+   // you have a file
+             if(rand_no%2 == 0){
+             document.getElementById("myTextarea").value = "Counterfeit documents";
+             n = n+1;
+             console.log(n);
+             document.getElementById("submitbtn").disabled = true;
+             
+             }
+             
+             else{
+              n = n+1;
+             document.getElementById("myTextarea").value = "documents submited";
+             document.getElementById("submitbtn").disabled = true;
+             }
+             
+           
+}
+
+else{
+
+  document.getElementById("myTextarea").value = "Please choose a file";
+
+}
+          
+
+          }
+          </script>
+
+        <div class="col align-content-center" id="elements">
+          <p style= "font-size: 2rem ; position: relative; left: 7rem">FRAUD DETECTION</p>
+          <textarea cols="50" rows="7" style="margin-right: 2em; color: black;" id="myTextarea">
+        
+            </textarea>
+            <button type="button"  style="margin-left: 8em" onclick="clickCounter()" id="f-button">Fraud</button>
+            <input type="text2" id="text2" style="width: 1px; height: 1px; background-color: transparent;display: none;" >
+
+             <script>
+
+
+function clickCounter() {
+
+  if(document.getElementById("subfile").value != "" && n!=0){
+  
+    if (localStorage.clickcount) {
+    localStorage.clickcount = Number(localStorage.clickcount)+1;
+  } else {
+    localStorage.clickcount = 0;
+  }
+  myJSON2 = localStorage.clickcount;
+ 
+  localStorage.setItem( 'objectToPass2', myJSON2 );
+
+  //disable the buttons
+  document.getElementById("f-button").disabled = true;
+  document.getElementById("nf-button").disabled = true;
+  document.getElementById("submitbtn").disabled = true;
+
+  document.getElementById("myTextarea").value = "NO FRAUD IS DETECTED";
+
+  }
+
+  else{
+    document.getElementById("myTextarea").value = "Please submit a file";
+  }
+  
+
+}
+
+             </script>
+
+          <button type="button" onclick="clickCounter2()" id="nf-button"></button>
+          <input type="text" id="text" style="width: 1px; height: 1px; background-color: transparent;display: none;" >
+          <script>
+
+function clickCounter2() {
+
+
+  if(document.getElementById("subfile").value != "" &&  n != 0){
+
+    if (localStorage.clickcount2) {
+    localStorage.clickcount2 = Number(localStorage.clickcount2)+1;
+  } else {
+    localStorage.clickcount2 = 0;
+  }
+  myJSON = localStorage.clickcount2;
+  
+  localStorage.setItem( 'objectToPass', myJSON );
+
+    //disable the buttons
+    document.getElementById("nf-button").disabled = true;
+    document.getElementById("f-button").disabled = true;
+    document.getElementById("submitbtn").disabled = true;
+
+    document.getElementById("myTextarea").value = "Your respone has been recorded! Please refresh the page";
+    
+  }
+
+  else{
+
+    document.getElementById("myTextarea").value = "Please submit a file";
+
+  }
+
+
+}  
+
+          </script>
+
+         <ul>
+          <h3 style="color: #ffe600; margin-left: 5.5rem; margin-top: 1rem;" >Instructions</h3>
+          <li>
+            <p style="margin-right: 2em;">Choose the file and click on submit</p>
+
+          </li>
+
+          <li>
+            <p style="margin-right: 2em;"> After the file is submitted, choose whether the result for the document being fraud is correct or not</p>
+
+          </li>
+
+          <li>
+            <p style="margin-right: 2em;">Once your response has been recorded, click on the refresh button and move on to the next file</p>
+          </li>
+
+         </ul>
+
+        
+
+        </div>
+
+        
+
+      </div>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </div>
+  
+  </body>
+
+</html>

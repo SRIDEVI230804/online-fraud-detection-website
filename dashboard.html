@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>EY Fraud Review</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./dash_style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&family=Raleway:wght@100&family=Red+Hat+Display:wght@500;700;900&family=Space+Mono&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script>
+
+           // Get the variable
+     var myData = localStorage['objectToPass'];
+     var myData2 = localStorage['objectToPass2'];
+
+     var num1 = parseInt(myData);
+     var num2 = parseInt(myData2);
+
+     
+     var total = num1 + num2;
+
+
+     function calculate() {
+
+    myData = localStorage['objectToPass']; 
+    myData2 = localStorage['objectToPass2'];
+
+    num1 = parseInt(myData);
+    num2 = parseInt(myData2);
+   
+     total = num1.value + num2.value;
+
+      }
+
+var success = Math.floor((num2/total)*100)
+var precision = Math.floor(num2/total)
+var recall = Math.floor(num2/total)
+var fmeasure = Math.floor((2*precision*recall)/(precision+recall))
+
+
+
+
+    </script>
+
+  </head>
+
+  <body class="main-text">
+
+   <!-- Side navigation -->
+   <nav class="sidenav">
+    <a href="/Code/dashboard.html">Dashboard</a>
+    <a href="/Code/main_page.html">Evaluation</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+   </nav> 
+   
+   <div class="container m-0 p-0" style="min-width:100vw; min-height:100vh">
+    <div class="row" style="min-width:100vw;">
+      <div class="col m-0 p-0">
+                      <!-- Navbar Component -->
+   <nav class="navbar navbar-expand-lg pb-0 pt-0 mb-4 mr-0" style="box-shadow: 0px 15px 15px #ffe600; z-index: 10; min-width:110%; position: fixed; top:0px;">
+    <a class="navbar-brand" href="#"><img id = "logo" src = "/Code/EY_logo.png" alt = ""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse font-weight-normal text-primary mt-lg-2" id="navbarSupportedContent" >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Insights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Services</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-white" href="#">Industries</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-white" href="#">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+      </div>
+    </div>
+    
+    <div class="container p-0" style="margin-left:11em; margin-top: 5em; min-width:100vw; min-height:100vh;" id="main">
+
+      <div class="row">
+        <div class="col">
+          <h3 class = "display-3 text-center" style="font-family: 'Times New Roman', Times, serif; margin-right: 3em;">Metrics</h3>
+            <button id = "reset" type="button" onclick="reset()" style="position: relative; left: 2em">Reset Page</button>
+        </div>
+
+          <script>
+            
+function reset() {
+
+  localStorage.clickcount = 0;
+  localStorage.clickcount2 = 0;
+
+  myJSON2 = localStorage.clickcount;
+  myJSON = localStorage.clickcount2;
+ 
+  localStorage.setItem( 'objectToPass2', myJSON2 );
+  localStorage.setItem( 'objectToPass', myJSON );
+
+  window.location.reload()
+}
+          </script>
+        
+        
+      
+      </div>
+
+      <div class="row " style="margin-top: 2em; margin-right: 10em;">
+        <div class="col text-center " id="icons_col_1">
+          
+          <p class="display-4" style="font-size:2em; font-family: 'Times New Roman';">Documents Reviewed</p>
+          <i class="fa fa-file" style="font-size:48px;color:white"></i>
+          <p class="display-4 mt-3" style="font-size:2em ;"><script type="text/javascript" onbeforeprint="calculate()">document.write(total);</script></p>  
+          
+       </div>
+ 
+       <div class="col text-center" id="icons_col_2" style="margin-right:1em">
+           <p class="display-4" style="font-size:2em ; font-family: 'Times New Roman';">Fraud Detected</p>
+           <i class="fa fa-check" style="font-size:48px;color:white"></i>
+           <p class="display-4 mt-3" style="font-size:2em ;"><script type="text/javascript" onbeforeprint="calculate()" >document.write(num2);</script></p>  
+       </div>
+ 
+       <div class="col text-center" id="icons_col_3">
+          <p class="display-4" style="font-size:2em ; font-family: 'Times New Roman';" id="falsepositive">False Positives</p>
+          <i class="fa fa-times" style="font-size:48px;color:white"></i>
+          <p class="display-4 mt-3" style="font-size:2em ;" id="falsepositive2"><script type="text/javascript" onbeforeprint="calculate()">document.write(num1);</script></p>  
+       </div>
+        
+      </div>
+
+      <div class="row " style="margin-top: 3em;">
+        <div class="col" style="margin-left: 4em;" >
+          <canvas id="myChart" style="width:70%;max-width:300px; max-height: 300px;"></canvas>
+        
+          <script>
+          var xValues = ["Not Fraud", "Fraud"];
+          var yValues = [num1, num2];
+          var barColors = [
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(255, 99, 132, 0.5)'
+        
+          ];
+          
+          new Chart("myChart", {
+            type: "pie",
+            data: {
+              labels: xValues,
+              datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: "Overview"
+              }
+            }
+          });
+          </script>
+        
+        
+        
+        </div>
+        
+        <div class="col" id="Chart2" style="margin-left: 1em">
+        <canvas id="myChart2" style="width:90%;max-width:400px; height: 100%; position: relative; right:0em;"></canvas>
+        <script>
+        
+        const ctx = document.getElementById('myChart2').getContext('2d');
+        const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: ['Precision', 'Recall', 'F-Measure'],
+        datasets: [{
+           
+            data: [num2/total, num2/total, (2*(num2/total)*(num1/total))/((num2/total)+(num1/total))],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        
+        legend:{
+          display: false
+        },
+        
+        title: {
+         display: true,
+         text: "Scores"
+        }
+        
+        }
+        });
+        
+        </script>
+        
+        </div>
+        
+        <div class="col-12">
+          <p class="text-center" style="margin-top: 3em; margin-right: 6em; font-size: 2em;">Success Percentage</p>
+          <p class="display-4 mt-3 text-center" style="font-size:4em ; font-family:serif; margin-right: 3em;"><script type="text/javascript" onbeforeprint="calculate()">document.write(success + "%");</script></p>  
+           
+        
+        </div>
+ 
+  
+      </div>
+      </div>
+    </div>
+
+
+    
+       <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    </div>
+  </body>
+</html>
